@@ -7,14 +7,18 @@ route.get('/',(req,res)=>{
 })
 
 route.post('/',(req,res)=>{
-    Users.create({
-        userName: req.body.username,
+    User.create({
+        username: req.body.username,
         password: req.body.password,
         firstName: req.body.firstname,
         lastName: req.body.lastname
     }).then((createdUser)=>{
-        res.redirect('/login')
-    })    
+    	res.send({mes: 'done!!',
+    			user: createdUser})
+        //res.redirect('/login')
+    }).catch(err=>{
+    	res.send('Some err '+ err)
+    })   
 })
 
 module.exports=route

@@ -10,7 +10,7 @@ route.post('/',(req,res)=>{
 	.then(X=>{
 
 
-		User.findByIdandUpdate(req.user.id,{$inc: {lastAttempt : 1 }},{new: true})
+		User.findByIdAndUpdate(req.user.id,{$inc: {lastAttempt : 1 }},{new: true})
 			.then(user=>{
 				res.json({mes: 'Done!'})
 			})
@@ -22,7 +22,7 @@ route.post('/',(req,res)=>{
 
 		if(req.body.ans===X.answer){
 
-			User.findByIdandUpdate(req.user.id,{$inc: {correctAns : 1 }},{new: true})
+			User.findByIdAndUpdate(req.user.id,{$inc: {correctAns : 1 }},{new: true})
 			.then(user=>{
 				res.json({mes: 'Done!'})
 			})

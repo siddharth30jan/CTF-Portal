@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended: true}))
 
 
  
-mongoose.connect('mongodb://localhost/ctf', {
+mongoose.connect('mongodb://localhost/ctf1', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -24,11 +24,11 @@ app.use(passport.session());
 
 
 
-app.get('/questions',require('./routes/questions'))
-app.get('/evaluation',require('./routes/evaluation'))
-app.get('/logout',require('./routes/logout'))
-app.get('/login',require('./routes/login'))
-app.get('/signup',require('./routes/signup'))
+app.use('/questions',require('./routes/questions'))
+app.use('/evaluation',require('./routes/evaluation'))
+app.use('/logout',require('./routes/logout'))
+app.use('/login',require('./routes/login'))
+app.use('/signup',require('./routes/signup'))
 
 
 app.listen(3000,()=>{

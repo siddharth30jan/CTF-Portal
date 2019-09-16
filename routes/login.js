@@ -15,7 +15,7 @@ route.post('/',passport.authenticate('local',{
 
 
 route.get('/success',(req,res)=>{
-	User.findByIdandUpdate(req.user.id,{entryTime: Date.now()})
+	User.findByIdAndUpdate(req.user.id,{entryTime: Date.now()})
 		.then(x=>{
 			res.redirect('/questions')
 		})
@@ -27,8 +27,9 @@ route.get('/success',(req,res)=>{
 
 
 route.get('/failure',(req,res)=>{
-	 req.flash("success", "Username or password is incorrect.");
-      res.redirect("/login");	
+	 //req.flash("success", "Username or password is incorrect.");
+    //  res.redirect("/login");	
+    res.send({mes: 'failure!!'})
 })
 
 module.exports=route

@@ -3,7 +3,7 @@ const mongoose=require('mongoose')
 const User=new mongoose.Schema({
 	firstName: {type: String,trim: true,defalult: ''},
 	lastName: {type: String,trim: true,defalult: ''},
-	userName: {type: String,trim: true,defalult: ''},
+	username: {type: String,trim: true,defalult: ''},
 	password: {type: String,trim: true,defalult: ''},
 	lastAttempt: {type: Number,defalult: 0},
 	correctAns: {type: Number,defalult: 0},

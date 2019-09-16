@@ -8,7 +8,7 @@ passport.serializeUser(function(user,done){
 
 
 passport.deserializeUser(function(username,done){
-    User.find({userName: username}).then((user)=>{
+    User.find({username: username}).then((user)=>{
         if(!user){
             return done(new Error("No such User!!"))
         }
@@ -19,12 +19,16 @@ passport.deserializeUser(function(username,done){
 })
 
 passport.use(new Localstrategy((username,password,done)=>{
-   User.find({userName: username}).then((user)=>{
-        
+   User.find({username: username}).then((user)=>{
+        user=user[0]
         if(!user){
+           console.log("No such User!") 
             return done(null,false,{message: "No such User!"})
         }
         if(user.password !== password){
+             console.log("Invalid Password!") 
+              console.log(user.password) 
+               console.log(password) 
             return done(null,false,{message: "Invalid Password!"})
         }
         return done(null,user)
